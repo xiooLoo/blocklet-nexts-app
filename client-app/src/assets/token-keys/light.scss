@@ -1,0 +1,381 @@
+/** Light 亮色Token **/
+/**
+ * Design Token 规约
+ * 
+ * 1. 第一部分（基础私有Token），😡Token禁止在外部引用！！！；
+ * 2. 第二部分（基础共享Token），😃Token可在外部引用；
+ * 3. 第三部分（主题私有Token），😡Token禁止在外部引用！！！；
+ * 4. 第四分部（主题共享Token），😃Token可在外部引用，如果变量粒度不够可扩充，扩充后的变量必须同步Light、Dark文件，无缝切换风格；
+ * 5. 全系统【色值】应用必须在此Light || Dark文件中获取，这样才能保证基于MiUI组件库开发的项目，无缝切换主题；
+ */
+
+/**
+ 备注1：HEXA透明度对照表
+ * 00%=FF（不透明）
+ * 5%=F2     10%=E5    15%=D8    
+ * 20%=CC    25%=BF    30%=B2    
+ * 35%=A5    40%=99    45%=8c    
+ * 50%=7F    55%=72    60%=66    
+ * 65%=59    70%=4c    75%=3F    
+ * 80%=33    85%=21    90%=19    
+ * 95%=0c    100%=00（全透明）
+ 
+ 备注2：字体大小 em / px 计算规则
+ * <body>标签设置font-size: 10px情况下，使用em
+ * 1em = 16px  
+ */
+
+/* ------------------------------------------------
+🥝第一部分：基础私有Token （😡Token禁止在外部引用！！！）
+-------------------------------------------------*/
+$--mi-color-white: #FFFFFF;
+$--mi-color-white-2: #F2F5F9;
+$--mi-color-dark: #000000;
+$--mi-color-dark-2: #0000007F;
+$--mi-color-dark-3: #303133;
+// 字体大小
+$--mi-font-size-em-6: 0.375em;
+$--mi-font-size-em-7: 0.438em;
+$--mi-font-size-em-8: 0.5em;
+$--mi-font-size-em-9: 0.563em;
+$--mi-font-size-em-10: 0.625em;
+$--mi-font-size-em-11: 0.688em;
+$--mi-font-size-em-12: 0.75em;
+$--mi-font-size-em-13: 0.813em;
+$--mi-font-size-em-14: 0.875em;
+$--mi-font-size-em-15: 0.938em;
+$--mi-font-size-em-16: 1em;
+$--mi-font-size-em-17: 1.063em;
+$--mi-font-size-em-18: 1.125em;
+$--mi-font-size-em-19: 1.188em;
+$--mi-font-size-em-20: 1.25em;
+$--mi-font-size-em-21: 1.313em;
+$--mi-font-size-em-22: 1.375em;
+$--mi-font-size-em-23: 1.438em;
+$--mi-font-size-em-24: 1.5em;
+$--mi-font-size-em-26: 1.6em;
+$--mi-font-size-em-30: 1.8em;
+$--mi-font-size-em-32: 2em;
+$--mi-font-size-em-36: 2.25em;
+$--mi-font-size-em-48: 3em;
+$--mi-font-size-em-56: 3.5em;
+$--mi-font-size-em-70: 4.38em;
+// px
+$--mi-font-size-px-6: 6px;
+$--mi-font-size-px-7: 7px;
+$--mi-font-size-px-8: 8px;
+$--mi-font-size-px-9: 9px;
+$--mi-font-size-px-10: 10px;
+$--mi-font-size-px-11: 11px;
+$--mi-font-size-px-12: 12px;
+$--mi-font-size-px-13: 13px;
+$--mi-font-size-px-14: 14px;
+$--mi-font-size-px-15: 15px;
+$--mi-font-size-px-16: 16px;
+$--mi-font-size-px-17: 17px;
+$--mi-font-size-px-18: 18px;
+$--mi-font-size-px-19: 19px;
+$--mi-font-size-px-20: 20px;
+$--mi-font-size-px-21: 21px;
+$--mi-font-size-px-22: 22px;
+$--mi-font-size-px-23: 23px;
+$--mi-font-size-px-24: 24px;
+$--mi-font-size-px-26: 26px;
+$--mi-font-size-px-30: 30px;
+$--mi-font-size-px-32: 32px;
+$--mi-font-size-px-36: 36px;
+$--mi-font-size-px-48: 48px;
+$--mi-font-size-px-56: 56px;
+$--mi-font-size-px-70: 70px;
+
+/* ------------------------------------------------
+🥝第二部分：基础共享Token （此部分Light、Dark主题通用） （😃Token可在外部引用）
+--------------------------------------------------*/
+// 字重
+$mi-font-weight-100: 100;  /*极细*/
+$mi-font-weight-200: 200;  /*纤细*/
+$mi-font-weight-300: 300;  /*细体*/
+$mi-font-weight-400: 400;  /*常规*/
+$mi-font-weight-500: 500;  /*中等（加粗）*/
+$mi-font-weight-600: 600;  /*半粗*/
+$mi-font-weight-700: 700;  /*粗体*/
+// 尺寸
+$mi-size-1: 4px;
+$mi-size-2: 8px;
+$mi-size-3: 12px;
+$mi-size-4: 16px;
+$mi-size-5: 20px;
+$mi-size-6: 24px;
+$mi-size-8: 32px;
+$mi-size-10: 40px;
+$mi-size-N: calc(4 * 11) px; /*对应的值为(4 * N)px*/
+$mi-size-50: 200px;
+// 字体大小（em/px）
+$mi-font-size-body-1: $--mi-font-size-px-12;
+$mi-font-size-body-2: $--mi-font-size-px-14;
+$mi-font-size-title-1: $--mi-font-size-px-16;
+$mi-font-size-title-1x: $--mi-font-size-px-18;
+$mi-font-size-title-2: $--mi-font-size-px-20;
+$mi-font-size-title-3: $--mi-font-size-px-24;
+// 组件尺寸
+$mi-com-size-mini: $mi-size-6;  /*小（24px）*/
+$mi-com-size-default: $mi-size-8; /*中（32px）*/
+$mi-com-size-large: $mi-size-10;  /*大（40px）*/
+// 边框宽度
+$mi-border-none: 0;  /*无边框*/
+$mi-border-1: 1px; /*常规*/
+$mi-border-2: 2px; /*较粗*/
+$mi-border-3: 3px; /*粗*/
+// 边框圆角
+$mi-border-radius-none: 0; /*直角*/
+$mi-border-radius-small: 2px;  /*圆角-常规*/
+$mi-border-radius-medium: 4px; /*圆角-中等*/
+$mi-border-radius-large: 8px;  /*圆角-较大*/
+$mi-border-radius-circle: 50%; /*圆角-全圆角*/
+
+/* ------------------------------------------------
+🥝第三部分：主题私有Token （😡Token禁止在外部引用！！！）
+-------------------------------------------------*/
+/* 红色 */
+$--mi-color-red-light-10: #93161A;
+$--mi-color-red-light-9: #C41D23;
+$--mi-color-red-light-8: #F5242C;
+$--mi-color-red-light-7: #F63941;
+$--mi-color-red-light-6: #F8656B;
+$--mi-color-red-light-5: #FA9194;
+$--mi-color-red-light-4: #FCBDBF;
+$--mi-color-red-light-3: #FEDDE0;
+$--mi-color-red-light-2: #FFEEEF;
+$--mi-color-red-light-1: #FEF8F8;
+/* 橘色 */
+$--mi-color-orange-light-10: #993515;
+$--mi-color-orange-light-9: #CC471C;
+$--mi-color-orange-light-8: #FF5923;
+$--mi-color-orange-light-7: #FD6A39;
+$--mi-color-orange-light-6: #FF8964;
+$--mi-color-orange-light-5: #FFAC91;
+$--mi-color-orange-light-4: #FFCDBD;
+$--mi-color-orange-light-3: #FEE6DE;
+$--mi-color-orange-light-2: #FFF3EE;
+$--mi-color-orange-light-1: #FFFAF8;
+/* 橙汁色 */
+$--mi-color-oj-light-10: #96590B;
+$--mi-color-oj-light-9: #C87710;
+$--mi-color-oj-light-8: #FB9517;
+$--mi-color-oj-light-7: #FAA83E;
+$--mi-color-oj-light-6: #FAB559;
+$--mi-color-oj-light-5: #FCC889;
+$--mi-color-oj-light-4: #FEDEB8;
+$--mi-color-oj-light-3: #FFF0DC;
+$--mi-color-oj-light-2: #FFF7ED;
+$--mi-color-oj-light-1: #FCFBF8;
+/* 金色 */
+$--mi-color-gold-light-10: #94781C;
+$--mi-color-gold-light-9: #C5A026;
+$--mi-color-gold-light-8: #F6C82F;
+$--mi-color-gold-light-7: #F6CD42;
+$--mi-color-gold-light-6: #F7D86C;
+$--mi-color-gold-light-5: #FAE397;
+$--mi-color-gold-light-4: #FDEEC0;
+$--mi-color-gold-light-3: #FEF7DF;
+$--mi-color-gold-light-2: #FEFBEF;
+$--mi-color-gold-light-1: #FEFDF7;
+/* 亮绿色 */
+$--mi-color-green-light-10: #32760F;
+$--mi-color-green-light-9: #429D14;
+$--mi-color-green-light-8: #53C419;
+$--mi-color-green-light-7: #64C92E;
+$--mi-color-green-light-6: #86D45D;
+$--mi-color-green-light-5: #A9E18B;
+$--mi-color-green-light-4: #CBECBC;
+$--mi-color-green-light-3: #E4F7DD;
+$--mi-color-green-light-2: #F2FBED;
+$--mi-color-green-light-1: #F8FDF8;
+/* 农业绿 */
+$--mi-color-aggreen-light-10: #16693A;
+$--mi-color-aggreen-light-9: #1E8C4D;
+$--mi-color-aggreen-light-8: #25AF60;
+$--mi-color-aggreen-light-7: #4EBE7F;
+$--mi-color-aggreen-light-6: #66C78F;
+$--mi-color-aggreen-light-5: #92D7AF;
+$--mi-color-aggreen-light-4: #BDE6CF;
+$--mi-color-aggreen-light-3: #DFF3E7;
+$--mi-color-aggreen-light-2: #EEF9F3;
+$--mi-color-aggreen-light-1: #F8FDFA;
+/* 青色 */
+$--mi-color-cyan-light-10: #006557;
+$--mi-color-cyan-light-9: #008774;
+$--mi-color-cyan-light-8: #00A991;
+$--mi-color-cyan-light-7: #32B9A4;
+$--mi-color-cyan-light-6: #4AC2B2;
+$--mi-color-cyan-light-5: #7FD3C8;
+$--mi-color-cyan-light-4: #B2E3DE;
+$--mi-color-cyan-light-3: #D8F3EE;
+$--mi-color-cyan-light-2: #EBFAF6;
+$--mi-color-cyan-light-1: #F7FCFC;
+/* 水利蓝 */
+$--mi-color-waterBlue-light-10: #015F94;
+$--mi-color-waterBlue-light-9: #017EC6;
+$--mi-color-waterBlue-light-8: #019EF7;
+$--mi-color-waterBlue-light-7: #1DA6F7;
+$--mi-color-waterBlue-light-6: #4FBBF9;
+$--mi-color-waterBlue-light-5: #80CDFC;
+$--mi-color-waterBlue-light-4: #B2E1FC;
+$--mi-color-waterBlue-light-3: #DBF1FF;
+$--mi-color-waterBlue-light-2: #EBF8FF;
+$--mi-color-waterBlue-light-1: #F7FCFE;
+/* 科技蓝 */
+$--mi-color-sciBlue-light-10: #37458B;
+$--mi-color-sciBlue-light-9: #495CB9;
+$--mi-color-sciBlue-light-8: #5B73E7;
+$--mi-color-sciBlue-light-7: #6B81E9;
+$--mi-color-sciBlue-light-6: #8C9CEE;
+$--mi-color-sciBlue-light-5: #ADB9F3;
+$--mi-color-sciBlue-light-4: #CCD4F7;
+$--mi-color-sciBlue-light-3: #E6EAFC;
+$--mi-color-sciBlue-light-2: #F2F4FD;
+$--mi-color-sciBlue-light-1: #FAFAFE;
+/* 紫色 */
+$--mi-color-purple-light-10: #453E90;
+$--mi-color-purple-light-9: #5C52C0;
+$--mi-color-purple-light-8: #7367F0;
+$--mi-color-purple-light-7: #8176F2;
+$--mi-color-purple-light-6: #9D94F4;
+$--mi-color-purple-light-5: #BAB3F7;
+$--mi-color-purple-light-4: #D5D0FA;
+$--mi-color-purple-light-3: #E9E8FD;
+$--mi-color-purple-light-2: #F4F3FE;
+$--mi-color-purple-light-1: #FAFAFD;
+/* 大后勤蓝 */
+$--mi-color-gilBlue-light-10: #1C4899;
+$--mi-color-gilBlue-light-9: #2560CC;
+$--mi-color-gilBlue-light-8: #2E78FF;
+$--mi-color-gilBlue-light-7: #4285FF;
+$--mi-color-gilBlue-light-6: #6CA0FF;
+$--mi-color-gilBlue-light-5: #96BBFF;
+$--mi-color-gilBlue-light-4: #C0D6FF;
+$--mi-color-gilBlue-light-3: #E0EBFF;
+$--mi-color-gilBlue-light-2: #EFF5FF;
+$--mi-color-gilBlue-light-1: #F7FAFF;
+/* 灰色 */
+$--mi-color-grey-light-11: #FAFBFB;
+$--mi-color-grey-light-10: #F8F8F9;
+$--mi-color-grey-light-9: #F6F6F7;
+$--mi-color-grey-light-8: #F1F2F4;
+$--mi-color-grey-light-7: #EDEEF0;
+$--mi-color-grey-light-6: #DCDEE2;
+$--mi-color-grey-light-5: #B8BCC4;
+$--mi-color-grey-light-4: #898F9D;
+$--mi-color-grey-light-3: #5A6275;
+$--mi-color-grey-light-2: #2B364E;
+$--mi-color-grey-light-1: #14203B;
+
+
+/*------------------------------------------------
+🥝第四部分：主题共享Token （😃Token可在外部引用）
+-------------------------------------------------*/
+// 阴影
+$mi-shadow-special: 0px 3px 6px -4px rgba(0, 0, 0, 0.12), 0px 6px 16px 0px rgba(0, 0, 0, 0.08), 0px 9px 28px 8px rgba(0, 0, 0, 0.05); /*特殊阴影-文字提示阴影*/
+$mi-shadow-center-1: 0px 6px 16px -8px rgba(0, 0, 0, 0.08), 0px 9px 28px 0px rgba(0, 0, 0, 0.05), 0px 12px 48px 16px rgba(0, 0, 0, 0.03);  /*阴影样式1-模态弹窗 例如对话框、抽屉*/
+$mi-shadow-center-2: 0px 3px 6px -4px rgba(0, 0, 0, 0.12), 0px 6px 16px 0px rgba(0, 0, 0, 0.08), 0px 9px 28px 8px rgba(0, 0, 0, 0.05); /*阴影样式2-非模态弹窗 例如全局提示、通知提醒框、组件背板*/
+$mi-shadow-center-3: 0px 3px 3px -4px rgba(50, 50, 93, 0.25), 0px 6px 10px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 8px rgba(0, 0, 0, 0.05); /*阴影样式3*/ 
+// 功能色
+$mi-color-fuctional-gilBlue: $--mi-color-gilBlue-light-8;
+$mi-color-fuctional-green: $--mi-color-green-light-8;
+$mi-color-fuctional-oj: $--mi-color-oj-light-8;
+$mi-color-fuctional-red: $--mi-color-red-light-8;
+$mi-color-fuctional-grey: $--mi-color-grey-light-5;
+// 主色
+$mi-color-primary-10: $--mi-color-gilBlue-light-10;
+$mi-color-primary-9: $--mi-color-gilBlue-light-9; /*主色激活*/
+$mi-color-primary-8: $--mi-color-gilBlue-light-8; /*主色常规*/
+$mi-color-primary-7: $--mi-color-gilBlue-light-7; /*主色悬浮*/
+$mi-color-primary-6: $--mi-color-gilBlue-light-6;
+$mi-color-primary-5: $--mi-color-gilBlue-light-5;
+$mi-color-primary-4: $--mi-color-gilBlue-light-4; /*主色禁用*/
+$mi-color-primary-3: $--mi-color-gilBlue-light-3; /*主色背景*/
+$mi-color-primary-2: $--mi-color-gilBlue-light-2;
+$mi-color-primary-1: $--mi-color-gilBlue-light-1;
+// 成功色
+$mi-color-success-10: $--mi-color-aggreen-light-10;
+$mi-color-success-9: $--mi-color-aggreen-light-9; /*成功色激活*/
+$mi-color-success-8: $--mi-color-aggreen-light-8; /*成功色常规*/
+$mi-color-success-7: $--mi-color-aggreen-light-7; /*成功色悬浮*/
+$mi-color-success-6: $--mi-color-aggreen-light-6;
+$mi-color-success-5: $--mi-color-aggreen-light-5;
+$mi-color-success-4: $--mi-color-aggreen-light-4; /*成功色禁用*/
+$mi-color-success-3: $--mi-color-aggreen-light-3; /*成功色背景*/
+$mi-color-success-2: $--mi-color-aggreen-light-2;
+$mi-color-success-1: $--mi-color-aggreen-light-1;
+// 警示色
+$mi-color-warning-10: $--mi-color-gold-light-10;
+$mi-color-warning-9: $--mi-color-gold-light-9;  /*警示色激活*/
+$mi-color-warning-8: $--mi-color-gold-light-8;  /*警示色常规*/
+$mi-color-warning-7: $--mi-color-gold-light-7;  /*警示色悬浮*/
+$mi-color-warning-6: $--mi-color-gold-light-6;
+$mi-color-warning-5: $--mi-color-gold-light-5;
+$mi-color-warning-4: $--mi-color-gold-light-4;  /*警示色禁用*/
+$mi-color-warning-3: $--mi-color-gold-light-3;  /*警示色背景*/
+$mi-color-warning-2: $--mi-color-gold-light-2;
+$mi-color-warning-1: $--mi-color-gold-light-1;
+// 错误色
+$mi-color-danger-10: $--mi-color-red-light-10;
+$mi-color-danger-9: $--mi-color-red-light-9;  /*错误色激活*/
+$mi-color-danger-8: $--mi-color-red-light-8;  /*错误色常规*/
+$mi-color-danger-7: $--mi-color-red-light-7;  /*错误色悬浮*/
+$mi-color-danger-6: $--mi-color-red-light-6;
+$mi-color-danger-5: $--mi-color-red-light-5;
+$mi-color-danger-4: $--mi-color-red-light-4;  /*错误色禁用*/
+$mi-color-danger-3: $--mi-color-red-light-3;  /*错误色背景*/
+$mi-color-danger-2: $--mi-color-red-light-2;
+$mi-color-danger-1: $--mi-color-red-light-1;
+// 链接色
+$mi-color-link-10: $--mi-color-gilBlue-light-10;
+$mi-color-link-9: $--mi-color-gilBlue-light-9;  /*链接色激活*/
+$mi-color-link-8: $--mi-color-gilBlue-light-8;  /*链接色常规*/
+$mi-color-link-7: $--mi-color-gilBlue-light-7;  /*链接色悬浮*/
+$mi-color-link-6: $--mi-color-gilBlue-light-6;
+$mi-color-link-5: $--mi-color-gilBlue-light-5;
+$mi-color-link-4: $--mi-color-gilBlue-light-4;  /*链接色禁用*/
+$mi-color-link-3: $--mi-color-gilBlue-light-3;
+$mi-color-link-2: $--mi-color-gilBlue-light-2;
+$mi-color-link-1: $--mi-color-gilBlue-light-1;
+// 边框颜色
+$mi-color-border-3: $--mi-color-grey-light-5; /*分割线-深色*/
+$mi-color-border-2: $--mi-color-grey-light-7; /*分割线-浅色1*/
+$mi-color-border-1: $--mi-color-grey-light-6; /*分割线-浅色2：输入框、选择框、表单、组件border*/
+// 填充颜色
+$mi-color-fill-6: $--mi-color-grey-light-5; /*【重】单/多选禁用、开关bg*/
+$mi-color-fill-5: $--mi-color-grey-light-6; /*【深】开关失效、头像bg*/
+$mi-color-fill-4: $--mi-color-grey-light-7; /*【次深】次级按钮禁用*/
+$mi-color-fill-3: $--mi-color-grey-light-8; /*【常规】分页器、tab标签页、次级按钮、滑动条bg*/
+$mi-color-fill-2: $--mi-color-grey-light-9; /*【浅】输入框禁用态、上传照片bg*/
+$mi-color-fill-1: $--mi-color-grey-light-10; /*【次浅】表头、组件bg、标签bg*/
+// 文字颜色
+$mi-color-text-1: $--mi-color-grey-light-2;  /*强调-标题*/
+$mi-color-text-2: $--mi-color-grey-light-3;  /*常规-正文*/
+$mi-color-text-3: $--mi-color-grey-light-4;  /*次要-提示*/
+$mi-color-text-4: $--mi-color-grey-light-5;  /*置灰-禁用*/
+$mi-color-text-5: $--mi-color-white;  /*纯白*/ 
+$mi-color-text-6: $--mi-color-grey-light-6;  /*其他*/
+// 背景颜色
+$mi-color-bg-10: $--mi-color-red-light-3; /*喜庆红背景*/
+$mi-color-bg-9: $--mi-color-aggreen-light-3; /*农业绿背景*/
+$mi-color-bg-8: $--mi-color-gold-light-3; /*金色背景*/
+$mi-color-bg-7: $--mi-color-sciBlue-light-3; /*科技蓝背景*/
+$mi-color-bg-6: $--mi-color-waterBlue-light-3; /*轻蓝色背景*/
+$mi-color-bg-5: $--mi-color-grey-light-2; /*黑色背景蒙层*/
+$mi-color-bg-4: $--mi-color-grey-light-1; /*黑色气泡提示*/
+$mi-color-bg-3: $--mi-color-white;  /*浮层背景*/
+$mi-color-bg-2: $--mi-color-white;  /*内容卡片*/
+$mi-color-bg-1: $--mi-color-white-2;  /*最底层布局背景*/
+// 基础色
+$mi-color-white-1: $--mi-color-white !default;  /*#FFFFFF*/
+$mi-color-white-2: $--mi-color-white-2;  /*#F2F5F9*/
+$mi-color-dark-1: $--mi-color-dark;   /*#000000*/
+$mi-color-dark-2: $--mi-color-dark-2;   /*#0000007F*/
+$mi-color-dark-3: $--mi-color-dark-3;   /*#303133*/
+
+:export {
+  testColor: $mi-color-bg-10;
+}

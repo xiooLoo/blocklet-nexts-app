@@ -3,8 +3,9 @@
 require('dotenv').config({ path: '../../../.env' });
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ProfileHeader from './Header';
 
-const ProfileHeader = () => {
+const Profile = () => {
   const [profile, setProfile] = useState({ username: '', email: '', phone: '' });
   const [isEditing, setIsEditing] = useState(false);
 
@@ -27,8 +28,9 @@ const ProfileHeader = () => {
   }
 
   return (
-    <div className="App container mx-auto p-4">
-      <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="App w-screen">
+      <ProfileHeader />
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="p-4">
           {isEditing ? (
             <div>
@@ -97,4 +99,4 @@ const ProfileHeader = () => {
   );
 };
 
-export default ProfileHeader;
+export default Profile;

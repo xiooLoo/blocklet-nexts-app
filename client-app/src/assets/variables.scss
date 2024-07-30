@@ -1,0 +1,89 @@
+@import './token-keys/light.scss';
+@import './token-keys/dark.scss';
+
+/** 切换主题【亮色/暗色】模式 */
+$themes: (
+  light: (
+    background_color: $mi-color-bg-1,
+    background_color_main: $mi-color-bg-2,
+    text_color: $--mi-color-grey-light-1,
+    theme_text_color: $--mi-color-gilBlue-light-8,
+    scroll_bar_color: $mi-color-primary-6,
+    border_color: $mi-color-border-3 
+  ),
+  dark: (
+    background_color: $--mi-color-grey-dark-1,
+    background_color_main: $--mi-color-grey-dark-1,
+    text_color: $--mi-color-grey-dark-11,
+    theme_text_color: $--mi-color-gilBlue-dark-8,
+    scroll_bar_color: $mi-color-fuctional-grey,
+    border_color: $mi-color-border-3
+  ),
+);
+
+@mixin themeify {
+
+  @each $theme-name,
+  $theme-map in $themes {
+    //!global 把局部变量强升为全局变量
+    $theme-map: $theme-map !global;
+
+    //判断html的data-theme的属性值 #{}是sass的插值表达式
+    //& sass嵌套里的父容器标识  @content是混合器插槽，像vue的slot
+    // [data-theme="#{$theme-name}"] & {
+    [data-theme="#{$theme-name}"] & {
+      @content;
+    }
+  }
+}
+
+//声明一个根据Key获取颜色的function
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+//【亮/暗】背景色
+@mixin background_color($color) {
+  @include themeify {
+    background: themed($color) !important;
+  }
+}
+
+//【亮/暗】内容区背景色
+@mixin background_color_main($color) {
+  @include themeify {
+    background: themed($color) !important;
+  }
+}
+
+//【亮/暗】字体色
+@mixin text_color($color) {
+  @include themeify {
+    color: themed($color) !important;
+  }
+}
+
+//【主题】字体色
+@mixin theme_text_color($color) {
+  @include themeify {
+    color: themed($color) !important;
+  }
+}
+
+//【滚动条】颜色
+@mixin scroll_bar_color($color) {
+  @include themeify {
+    background: themed($color) !important;
+  }
+}
+
+//【边框】颜色
+@mixin border_color($color) {
+  @include themeify {
+    border-color: themed($color) !important;
+  }
+}
+
+:export {
+  primaryColor: '#red'
+}
