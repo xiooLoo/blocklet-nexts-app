@@ -1,0 +1,18 @@
+{
+    "name": "blocklet-nextts-app",
+    "version": "0.1.0",
+    "description": "A simple Blocklet profile app",
+    "main": "server-app/index.ts",
+    "scripts": {
+      "start": "node server-app/index.ts"
+    },
+    "blocklet": {
+      "type": "web",
+      "author": "yang.jinpeng",
+      "description": "A simple Blocklet profile app",
+      "repository": "https://github.com/xiooLoo/blocklet-nexts-app.git",
+      "homepage": "https://github.com/xiooLoo/blocklet-nexts-app.git,dev",
+      "keywords": ["blocklet", "profile", "example"],
+      "license": "MIT"
+    }
+  }
