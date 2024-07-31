@@ -1,5 +1,6 @@
-import { BoHeader, MiSpeedDial } from "@/components";
-// import styled from "@emotion/styled";
+"use client"
+
+import { MiSpeedDial } from "@/components";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { styled as coreStyled } from "@mui/system";
 import './index.scss';
@@ -38,11 +39,7 @@ export const RootLayout = (props: IProps) => {
     <ThemeProvider theme={theme}>
       <div className="h-[100vh] w-[100vw] flex flex-col justify-between items-center">
         <MiSpeedDial></MiSpeedDial>
-        <div className="w-full h-full">
-          <BoHeader className="h-[50px] border-[1px] border-solid border-[#efefef]" />
-          <Box className='w-full h-[calc(100%-50px)]'>{!props.children ? '❓' : props.children}</Box>
-          <div>fff</div>
-        </div>
+        <Box className='w-full z-[-1]'>{!props.children ? '❓' : props.children}</Box>
       </div>
     </ThemeProvider>
   );
@@ -51,6 +48,7 @@ export const RootLayout = (props: IProps) => {
 const Box = coreStyled('div')({
   backgroundColor: '#f0f0f0',
   width: '100%',
+  height: '100vh',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -69,3 +67,5 @@ const Box = coreStyled('div')({
 //   font-weight: 600;
 //   color: #2e78ff;
 // `;
+
+export default RootLayout;

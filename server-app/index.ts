@@ -6,7 +6,12 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  methods: 'GET,HEAD.PUT,PATCH,POST,DELETE'
+}
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Initialize Sequelize
@@ -17,7 +22,7 @@ const sequelize = new Sequelize({
 
 // Define User model
 const User = sequelize.define('User', {
-  username: {
+  userName: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -28,7 +33,15 @@ const User = sequelize.define('User', {
   phone: {
     type: DataTypes.STRING,
     allowNull: false
-  }
+  },
+  subject: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  message: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
 });
 
 // Sync database
@@ -42,15 +55,17 @@ app.get('/api/profile', async (req, res) => {
 
 // Update user profile
 app.post('/api/profile', async (req, res) => {
-  const { username, email, phone } = req.body;
+  const { userName, email, phone, subject, message } = req.body;
   let user = await User.findOne();
   if (user) {
-    user.username = username;
+    user.userName = userName;
     user.email = email;
     user.phone = phone;
+    user.subject = subject;
+    user.message = message;
     await user.save();
   } else {
-    user = await User.create({ username, email, phone });
+    user = await User.create({ userName, email, phone, subject, message });
   }
   res.json(user);
 });

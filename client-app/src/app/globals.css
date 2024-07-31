@@ -1,3 +1,9 @@
+@import "~/public/layout.css";
+@import "~/public/default.css";
+@import "~/public/fonts.css";
+@import "~/public/magnific-popup.css";
+@import "~/public/media-queries.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

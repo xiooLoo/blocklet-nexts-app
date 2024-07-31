@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { RootLayout } from "@/layout";
 import { MiButton } from "@/components";
+import ParticlesBg from "particles-bg";
 
 const HomePage = () => {
   const [rowHeight, setRowHeight] = useState(50);
@@ -28,7 +29,8 @@ const HomePage = () => {
   }, []);
   return (
     <RootLayout>
-        <MiButton>Home Page Developing...</MiButton>
+      <ParticlesBg type="circle" bg={true} />
+      <MiButton>TODO: <br/>Home Page</MiButton>
     </RootLayout>
   );
 };
